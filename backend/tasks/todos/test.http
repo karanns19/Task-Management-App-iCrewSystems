@@ -1,0 +1,55 @@
+### Test Register API Endpoint
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+  "username": "karan",
+  "email": "karanns19@gmail.com",
+  "password": "qwertyuiop"
+}
+
+### Test Login API Endpoint
+
+POST http://127.0.0.1:8000/login/
+Content-Type: application/json
+
+{
+   "email": "karanns.aero19@gmail.com",
+   "password": "qwertyuiop" 
+}
+
+### Create Todos API Endpoint
+
+POST http://127.0.0.1:8000/todos/create_todo/
+Content-Type: application/json
+
+{
+  "email": "karanns.aero19@gmail.com",
+  "title": "Test Todo 6",
+  "description": "This is a test todo",
+  "priority": "high",
+  "completed": false,
+  "due_date": "2024-03-08"
+}
+
+### Read Todos API Endpoint
+
+GET http://127.0.0.1:8000/read_todo/?email=karanns.aero19@gmail.com
+
+### Update Todos API Endpoint
+
+PUT http://127.0.0.1:8000/update_todo/8/  
+Content-Type: application/json
+
+{
+  "email": "karanns.aero19@gmail.com",
+  "title": "Updated o Title",
+  "description": "Updated description",
+  "priority": "medium",
+  "completed": true,
+  "due_date": "2024-03-10"
+}
+
+### Delete Todo API Endpoint
+
+DELETE http://127.0.0.1:8000/delete_todo/11/?email=karanns.aero19@gmail.com

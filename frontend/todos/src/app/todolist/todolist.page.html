@@ -1,0 +1,54 @@
+<!--App Header-->
+<ion-header [translucent]="true" class="appHeader">
+  <ion-title>iCrewSystems</ion-title>
+  <ion-button (click)="logout()" color="light" class="logout">Logout</ion-button>
+</ion-header>
+
+<!--Todo List Header-->
+<ion-header class="taskHeader">
+  <ion-title>
+    Task Management
+  </ion-title>
+  <ion-item>
+    <ion-label>Sort by Priority</ion-label>
+    <ion-select [(ngModel)]="selectedOption" (ionChange)="toggleSortingOption()">
+      <ion-select-option value="hightolow">High to Low</ion-select-option>
+      <ion-select-option value="lowtohigh">Low to High</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let todo of todos">
+      <ion-checkbox slot="start" [(ngModel)]="todo.completed"></ion-checkbox>
+      <ion-label [class.completed]="todo.completed">
+        <h2>Title: {{ todo.title }}</h2>
+        <p>Description: {{ todo.description }}</p>
+        <p>Due Date: {{ todo.due_date | date }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-item>
+          <ion-select [(ngModel)]="todo.priority" placeholder="Select Priority" (ionChange)="editTodo(todo)">
+            <ion-select-option value="Low">Low</ion-select-option>
+            <ion-select-option value="Medium">Medium</ion-select-option>
+            <ion-select-option value="High">High</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button (click)="editTodo(todo)">
+          <ion-icon slot="start" name="create-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button (click)="deleteTodo(todo)">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addTodo()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

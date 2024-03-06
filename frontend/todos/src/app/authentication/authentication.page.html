@@ -1,0 +1,54 @@
+<form [formGroup]="authForm" (ngSubmit)="isLogin ? login() : register()">
+
+  <ion-img class="logo" src="../../assets/tasks.png"
+    alt="Tasks Logo"></ion-img>
+    
+  <!-- Username Field (Only shown in Registration mode) -->
+  <ion-item *ngIf="!isLogin" class="authItem">
+    <ion-label position="floating" class="authLabel"><ion-img class="authLogo" src="../../assets/user.png"
+      alt="Tasks Logo"></ion-img>Username</ion-label>
+    <ion-input formControlName="username" type="text"></ion-input>
+  </ion-item>
+
+  <!-- Email Field -->
+  <ion-item class="authItem">
+    <ion-label position="floating" class="authLabel"><ion-img class="authLogo" src="../../assets/email.png"
+      alt="Tasks Logo"></ion-img>Email</ion-label>
+    <ion-input formControlName="email" type="email"></ion-input>
+  </ion-item>
+  <div *ngIf="authForm.get('email')?.invalid && (authForm.get('email')?.dirty || authForm.get('email')?.touched)">
+    <p *ngIf="authForm.hasError('required', ['email'])" class="error">Email is required.</p>
+    <p *ngIf="authForm.hasError('email', ['email'])" class="error">Invalid email format.</p>
+  </div>
+
+  <!-- Password Field -->
+  <ion-item class="authItem">
+    <ion-label position="floating" class="authLabel"><ion-img class="authLogo" src="../../assets/password.png"
+      alt="Tasks Logo"></ion-img>Password</ion-label>
+    <ion-input formControlName="password" type="password"></ion-input>
+  </ion-item>
+  <div
+    *ngIf="authForm.get('password')?.invalid && (authForm.get('password')?.dirty || authForm.get('password')?.touched)">
+    <p *ngIf="authForm.hasError('required', ['password'])" class="error">Password is required.</p>
+    <p *ngIf="authForm.hasError('minlength', ['password']) && !isLogin" class="error">Password should be at least 8
+      characters.</p>
+  </div>
+
+  <!-- Submit Button -->
+  <ion-button class="btn" type="submit" *ngIf="isLogin"
+    [disabled]="authForm.get('email')?.invalid && authForm.get('password')?.invalid">
+    Login
+  </ion-button>
+
+  <!-- Register Button -->
+  <ion-button type="submit" class="btn" *ngIf="!isLogin"
+    [disabled]="authForm.get('email')?.invalid && authForm.get('password')?.invalid">
+    Register
+  </ion-button>
+
+  <!-- Toggle Button -->
+  <ion-label class="bottomSpan" expand="block" (click)="toggleForm()">
+    {{ isLogin ? 'Want to Register?' : 'Want to Login?' }}
+  </ion-label>
+
+</form>

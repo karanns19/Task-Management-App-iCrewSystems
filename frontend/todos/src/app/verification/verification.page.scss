@@ -1,0 +1,114 @@
+.verifyContent {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ion-card-header{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.spinner-md ion-spinner {
+    width: 64px;
+    height: 64px;
+}
+
+.spinner-ios ion-spinner {
+    width: 48px;
+    height: 48px;
+}
+
+.spinner-ios12 ion-spinner {
+    width: 48px;
+    height: 48px;
+}
+
+.spinner-ios12 ion-spinner .spinner-ios12-inner {
+    width: 48px;
+    height: 48px;
+}
+
+.spinner-md ion-spinner .spinner-circles,
+.spinner-ios ion-spinner .spinner-circles,
+.spinner-ios12 ion-spinner .spinner-circles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+
+.spinner-md ion-spinner .spinner-circle,
+.spinner-ios ion-spinner .spinner-circle,
+.spinner-ios12 ion-spinner .spinner-circle {
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 4px solid;
+    border-color: #369aff transparent transparent transparent;
+    border-radius: 50%;
+    animation: spinner-md 1.5s linear infinite;
+}
+
+.spinner-md ion-spinner .spinner-circle:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.spinner-md ion-spinner .spinner-circle:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.spinner-md ion-spinner .spinner-circle:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+.spinner-md ion-spinner .spinner-circle:nth-child(4) {
+    animation-delay: 0s;
+}
+
+.spinner-ios ion-spinner .spinner-circle:nth-child(1) {
+    animation-delay: -0.4s;
+}
+
+.spinner-ios ion-spinner .spinner-circle:nth-child(2) {
+    animation-delay: -0.2s;
+}
+
+.spinner-ios ion-spinner .spinner-circle:nth-child(3) {
+    animation-delay: 0s;
+}
+
+.spinner-ios12 ion-spinner .spinner-circle:nth-child(1) {
+    animation-delay: -0.4s;
+}
+
+.spinner-ios12 ion-spinner .spinner-circle:nth-child(2) {
+    animation-delay: -0.2s;
+}
+
+.spinner-ios12 ion-spinner .spinner-circle:nth-child(3) {
+    animation-delay: 0s;
+}
+
+@keyframes spinner-md {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

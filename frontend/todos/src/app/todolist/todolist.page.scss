@@ -1,0 +1,29 @@
+.completed {
+    text-decoration: line-through;
+}
+
+.appHeader{
+    display: flex;
+    width: 100%;
+    padding: 1%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.logout{
+    font-size: 12px;
+}
+
+.taskHeader{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    background-color: rgba(30, 30, 30);
+}
+
+.taskHeader ion-item{
+    width: 40%;
+}
+
+.appHeader ion-title{
+    font-size: 24px;
+}
