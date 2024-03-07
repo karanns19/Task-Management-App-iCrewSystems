@@ -14,7 +14,7 @@ export class AuthService {
   // Storage Variable
   private _storage: Storage | null = null;
   // Base API URL
-  private baseUrl = 'http://127.0.0.1:8000/';
+  private baseUrl = 'https://karanns19.pythonanywhere.com/';
   getEmail: string = ''
 
   public isAuthenticatedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
