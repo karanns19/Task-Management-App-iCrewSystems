@@ -24,7 +24,12 @@ export class TodolistPage implements OnInit {
     this.loadTodos();
   }
 
-  constructor(private authService: AuthService, private alertController: AlertController, private todoService: TodoService, private storage: Storage) { }
+  constructor(private authService: AuthService, private alertController: AlertController, private todoService: TodoService, private storage: Storage) {
+    setInterval(() => {
+      this.checkDueDates();
+    }, 5000);
+  }
+
 
   // Function to load all the todos
   loadTodos() {
@@ -40,7 +45,19 @@ export class TodolistPage implements OnInit {
           }
         });
       } else {
-        console.log('User email not found in local storage');
+        console.log('User email not found in local storage', this.authService.getEmail);
+        if (this.authService.getEmail !== '') {
+          this.todoService.readTodo(this.authService.getEmail).subscribe((todos: Todo[]) => {
+            this.todos = todos;
+            if (this.selectedOption === 'hightolow') {
+              this.sortTodosHighToLow();
+            } else if (this.selectedOption === 'lowtohigh') {
+              this.sortTodosLowToHigh();
+            }
+          });
+        } else {
+          console.log('User not logged in.');
+        }
       }
     });
   }
@@ -61,12 +78,6 @@ export class TodolistPage implements OnInit {
           placeholder: 'Description'
         },
         {
-          name: 'priority',
-          type: 'text',
-          placeholder: 'Priority',
-          disabled: true
-        },
-        {
           name: 'due_date',
           type: 'date',
           placeholder: 'Due Date'
@@ -84,7 +95,7 @@ export class TodolistPage implements OnInit {
               id: 100,
               title: data.title,
               description: data.description,
-              priority: data.priority,
+              priority: 'Low',
               completed: false,
               due_date: data.due_date
             };
@@ -126,7 +137,8 @@ export class TodolistPage implements OnInit {
           name: 'priority',
           type: 'text',
           value: todo.priority,
-          placeholder: 'Priority'
+          placeholder: 'Priority',
+          disabled: true
         },
         {
           name: 'due_date',
@@ -175,6 +187,33 @@ export class TodolistPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  completedTodo(todo: Todo) {
+    const updatedTodo: Todo = {
+      id: todo.id,
+      title: todo.title,
+      description: todo.description,
+      priority: todo.priority,
+      completed: todo.completed,
+      due_date: todo.due_date
+    };
+    this.storage.get('email').then((email) => {
+      if (email) {
+        this.todoService.updateTodo(email, todo.id, updatedTodo).subscribe(
+          response => {
+            console.log(response);
+            this.loadTodos();
+          },
+          error => {
+            console.error(error);
+          }
+        );
+      } else {
+        console.error('Error updating todo status:');
+        todo.completed = !todo.completed;
+      }
+    });
   }
 
   // Function to delete todos
@@ -230,6 +269,32 @@ export class TodolistPage implements OnInit {
       }
     });
   }
+
+  checkDueDates() {
+    const currentDate = new Date();
+
+    this.todos.forEach(todo => {
+      const dueDate = todo.due_date instanceof Date ? todo.due_date : new Date(todo.due_date);
+
+      if (dueDate && dueDate < currentDate) {
+        const labels = document.querySelectorAll('.todo-label');
+        labels.forEach(label => {
+          if (label.textContent && label.textContent.includes(todo.title)) {
+            if (!label.classList.contains('past-due')) {
+              label.classList.add('past-due');
+
+              // Add text after title
+              const textNode = document.createElement('span');
+              textNode.textContent = '- Please Reschedule Task';
+              textNode.classList.add('past-due-text'); // Add the class here
+              label.appendChild(textNode);
+            }
+          }
+        });
+      }
+    });
+  }
+
 
   // Function to handle Logout
   logout() {

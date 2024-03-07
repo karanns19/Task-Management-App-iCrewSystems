@@ -15,6 +15,7 @@ export class AuthService {
   private _storage: Storage | null = null;
   // Base API URL
   private baseUrl = 'http://127.0.0.1:8000/';
+  getEmail: string = ''
 
   public isAuthenticatedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();

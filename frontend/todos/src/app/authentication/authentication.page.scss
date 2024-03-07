@@ -47,3 +47,15 @@ form {
     width: 40%;
     margin-top: 1%;
 }
+
+.checkbox{
+    width: 30%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox ion-checkbox{
+    margin-right: 10px;
+}

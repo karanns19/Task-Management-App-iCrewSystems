@@ -18,18 +18,20 @@
   </ion-item>
 </ion-header>
 
+<!-- TodoList Content -->
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let todo of todos">
-      <ion-checkbox slot="start" [(ngModel)]="todo.completed"></ion-checkbox>
-      <ion-label [class.completed]="todo.completed">
+      <ion-checkbox slot="start" [(ngModel)]="todo.completed" (ionChange)="completedTodo(todo)"></ion-checkbox>
+      <ion-label [class.completed]="todo.completed" class="todo-label">
         <h2>Title: {{ todo.title }}</h2>
         <p>Description: {{ todo.description }}</p>
         <p>Due Date: {{ todo.due_date | date }}</p>
       </ion-label>
       <ion-buttons slot="end">
         <ion-item>
-          <ion-select [(ngModel)]="todo.priority" placeholder="Select Priority" (ionChange)="editTodo(todo)">
+          <ion-select [disabled]="todo.completed" [(ngModel)]="todo.priority" placeholder="Select Priority"
+            (ionChange)="editTodo(todo)">
             <ion-select-option value="Low">Low</ion-select-option>
             <ion-select-option value="Medium">Medium</ion-select-option>
             <ion-select-option value="High">High</ion-select-option>
@@ -46,6 +48,7 @@
     </ion-item>
   </ion-list>
 
+  <!-- Add Floating Icon -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="addTodo()">
       <ion-icon name="add"></ion-icon>

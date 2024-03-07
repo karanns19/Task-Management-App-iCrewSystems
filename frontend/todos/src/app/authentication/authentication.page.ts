@@ -18,6 +18,8 @@ export class AuthenticationPage implements OnInit {
   password!: string;
   isLogin: boolean = true;
   authForm!: FormGroup;
+  isChecked: boolean = true;
+
 
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder, private storage: Storage) { }
 
@@ -44,6 +46,7 @@ export class AuthenticationPage implements OnInit {
           const token = response.token
           if (response.status == 'success') {
             this.authService.isAuthenticatedSubject.next(true);
+            this.authService.getEmail = email
             this.storage.create().then(() => {
               this.storage.set('token', token);
               this.storage.set('email', email);

@@ -2,28 +2,49 @@
     text-decoration: line-through;
 }
 
-.appHeader{
+.appHeader {
     display: flex;
     width: 100%;
     padding: 1%;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.logout{
+.logout {
     font-size: 12px;
 }
 
-.taskHeader{
+.taskHeader {
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     background-color: rgba(30, 30, 30);
 }
 
-.taskHeader ion-item{
+.notifyHeader {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    background-color: rgba(30, 30, 30);
+    padding: 10px;
+    padding-left: 0px;
+}
+
+.taskHeader ion-item {
     width: 40%;
 }
 
-.appHeader ion-title{
+.appHeader ion-title {
     font-size: 24px;
+}
+
+.custom-input {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.past-due,
+.past-due-text {
+  color: red;
 }

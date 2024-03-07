@@ -5,5 +5,5 @@ export interface Todo {
     description: string;
     priority: string;
     completed: boolean;
-    due_date: Date | null;
+    due_date: Date | string;
 }

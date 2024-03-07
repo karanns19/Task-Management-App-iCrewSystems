@@ -1,19 +1,18 @@
 <form [formGroup]="authForm" (ngSubmit)="isLogin ? login() : register()">
 
-  <ion-img class="logo" src="../../assets/tasks.png"
-    alt="Tasks Logo"></ion-img>
-    
+  <ion-img class="logo" src="../../assets/tasks.png" alt="Tasks Logo"></ion-img>
+
   <!-- Username Field (Only shown in Registration mode) -->
   <ion-item *ngIf="!isLogin" class="authItem">
     <ion-label position="floating" class="authLabel"><ion-img class="authLogo" src="../../assets/user.png"
-      alt="Tasks Logo"></ion-img>Username</ion-label>
+        alt="Tasks Logo"></ion-img>Username</ion-label>
     <ion-input formControlName="username" type="text"></ion-input>
   </ion-item>
 
   <!-- Email Field -->
   <ion-item class="authItem">
     <ion-label position="floating" class="authLabel"><ion-img class="authLogo" src="../../assets/email.png"
-      alt="Tasks Logo"></ion-img>Email</ion-label>
+        alt="Tasks Logo"></ion-img>Email</ion-label>
     <ion-input formControlName="email" type="email"></ion-input>
   </ion-item>
   <div *ngIf="authForm.get('email')?.invalid && (authForm.get('email')?.dirty || authForm.get('email')?.touched)">
@@ -24,7 +23,7 @@
   <!-- Password Field -->
   <ion-item class="authItem">
     <ion-label position="floating" class="authLabel"><ion-img class="authLogo" src="../../assets/password.png"
-      alt="Tasks Logo"></ion-img>Password</ion-label>
+        alt="Tasks Logo"></ion-img>Password</ion-label>
     <ion-input formControlName="password" type="password"></ion-input>
   </ion-item>
   <div
@@ -32,6 +31,11 @@
     <p *ngIf="authForm.hasError('required', ['password'])" class="error">Password is required.</p>
     <p *ngIf="authForm.hasError('minlength', ['password']) && !isLogin" class="error">Password should be at least 8
       characters.</p>
+  </div>
+
+  <div class="checkbox">
+    <ion-checkbox checked="true"></ion-checkbox>
+    <ion-label>Remember Me</ion-label>
   </div>
 
   <!-- Submit Button -->
