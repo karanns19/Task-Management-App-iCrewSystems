@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "username": "karan",
   "email": "karanns19@gmail.com",
-  "password": "qwertyuiop"
+  "password": "asdfghjkl"
 }
 
 ### Test Login API Endpoint
