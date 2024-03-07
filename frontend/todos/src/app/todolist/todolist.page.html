@@ -29,6 +29,9 @@
         <p>Due Date: {{ todo.due_date | date }}</p>
       </ion-label>
       <ion-buttons slot="end">
+        <ion-icon name="flag" color="danger" *ngIf="todo.priority == 'High'"></ion-icon>
+        <ion-icon name="flag" color="warning" *ngIf="todo.priority == 'Medium'"></ion-icon>
+        <ion-icon name="flag" color="success" *ngIf="todo.priority == 'Low'"></ion-icon>
         <ion-item>
           <ion-select [disabled]="todo.completed" [(ngModel)]="todo.priority" placeholder="Select Priority"
             (ionChange)="editTodo(todo)">
