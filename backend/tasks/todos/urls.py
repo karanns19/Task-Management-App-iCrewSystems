@@ -12,4 +12,5 @@ urlpatterns = [
     path('read_todo/', views.read_todo, name='read_todo'),
     path('update_todo/<int:todo_id>/', views.update_todo, name='update_todo'),
     path('delete_todo/<int:todo_id>/', views.delete_todo, name='delete_todo'),
+    path('', views.hello, name='hello')
 ]

@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.management.utils import get_random_secret_key
 from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from .models import UserModel
 from .models import Todo
 import uuid
@@ -193,3 +193,8 @@ def delete_todo(request, todo_id):
         return JsonResponse({'message': 'Todo deleted successfully'})
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+    
+
+# Just to test Hosting Web App
+def hello(request):
+    return HttpResponse("Hello, Welcome to Task Management")
