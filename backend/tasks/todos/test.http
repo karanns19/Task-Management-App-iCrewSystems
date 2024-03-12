@@ -5,16 +5,15 @@ Content-Type: application/json
 {
   "username": "karan",
   "email": "karanns19@gmail.com",
-  "password": "asdfghjkl"
+  "password": "qwertyuiop"
 }
-
 ### Test Login API Endpoint
 
 POST http://127.0.0.1:8000/login/
 Content-Type: application/json
 
 {
-   "email": "karanns.aero19@gmail.com",
+   "email": "karanns19@gmail.com",
    "password": "qwertyuiop" 
 }
 
@@ -24,7 +23,7 @@ POST http://127.0.0.1:8000/todos/create_todo/
 Content-Type: application/json
 
 {
-  "email": "karanns.aero19@gmail.com",
+  "email": "karanns19@gmail.com",
   "title": "Test Todo 6",
   "description": "This is a test todo",
   "priority": "high",
@@ -34,15 +33,15 @@ Content-Type: application/json
 
 ### Read Todos API Endpoint
 
-GET http://127.0.0.1:8000/read_todo/?email=karanns.aero19@gmail.com
+GET http://127.0.0.1:8000/read_todo/?email=karanns19@gmail.com
 
 ### Update Todos API Endpoint
 
-PUT http://127.0.0.1:8000/update_todo/8/  
+PUT http://127.0.0.1:8000/update_todo/26/  
 Content-Type: application/json
 
 {
-  "email": "karanns.aero19@gmail.com",
+  "email": "karanns19@gmail.com",
   "title": "Updated o Title",
   "description": "Updated description",
   "priority": "medium",
@@ -52,4 +51,4 @@ Content-Type: application/json
 
 ### Delete Todo API Endpoint
 
-DELETE http://127.0.0.1:8000/delete_todo/11/?email=karanns.aero19@gmail.com
+DELETE http://127.0.0.1:8000/delete_todo/26/?email=karanns19@gmail.com

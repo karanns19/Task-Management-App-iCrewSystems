@@ -25,13 +25,13 @@ SECRET_KEY = 'django-insecure-==8sg@h)k*rk-@h667a76@j_vm8a(&6h0496=k^g(xhr_vm%&o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['*']
 
 # CORS
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Verification Email Sending Feature - Configuration
-BASE_URL = 'https://karanns19.pythonanywhere.com/'
+BASE_URL = 'http://127.0.0.1:8000'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
